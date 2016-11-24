@@ -9,9 +9,6 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
 
-/**
- * Created by william on 16/11/2016.
- */
 @Configuration
 @MapperScan(basePackages = "br.com.example.impl.mapper")
 public class DataConfig {

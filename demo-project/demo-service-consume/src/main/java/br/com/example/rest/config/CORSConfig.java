@@ -8,9 +8,6 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by william on 16/11/2016.
- */
 @Configuration
 public class CORSConfig {
 
