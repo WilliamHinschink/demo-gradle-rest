@@ -2,16 +2,16 @@ package br.com.example.impl.service;
 
 import br.com.example.impl.mapper.ClienteMapper;
 import br.com.example.impl.model.ClienteModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class ClienteService {
 
-    @Autowired
     private ClienteMapper clienteMapper;
+
+    public ClienteService(ClienteMapper clienteMapper) {
+        this.clienteMapper = clienteMapper;
+    }
 
     public List<ClienteModel> findAllClientes() { return clienteMapper.findAllClientes(); }
 

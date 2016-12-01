@@ -1,18 +1,15 @@
 package br.com.example.rest.v1;
 
-import br.com.example.impl.model.ClienteModel;
 import br.com.example.impl.service.ClienteService;
 import br.com.example.rest.v1.binder.ClienteBinder;
 import br.com.example.rest.v1.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Component
 @Path("/v1")
 public class RestEndpoints {
 

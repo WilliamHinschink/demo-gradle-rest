@@ -1,22 +1,38 @@
 package br.com.example.init;
 
+import br.com.example.impl.mapper.ClienteMapper;
+import br.com.example.impl.model.ClienteModel;
 import br.com.example.impl.service.ClienteService;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Application.class)
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
+
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest(classes = Application.class)
 public class DemoServiceAppApplicationTests {
 
-	@Autowired
 	private ClienteService clienteService;
+	private ClienteMapper clienteMapper;
+
+	@Before
+	public void setUp() throws Exception{
+		clienteMapper = mock(ClienteMapper.class);
+		clienteService = new ClienteService(clienteMapper);
+	}
 
 	@Test
 	public void getAllClientes() throws Exception {
-		clienteService.findAllClientes().forEach(cliente -> System.out.println(cliente));
+		when(clienteMapper.findAllClientes()).thenReturn(Arrays.asList(new ClienteModel(), new ClienteModel()));
+		List<ClienteModel> allClientes = clienteService.findAllClientes();
+		System.out.println(allClientes);
+		assertThat(allClientes.size(), is(2));
 	}
 }
