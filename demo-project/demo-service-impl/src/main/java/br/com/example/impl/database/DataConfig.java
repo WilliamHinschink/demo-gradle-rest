@@ -13,17 +13,6 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "br.com.example.impl.mapper")
 public class DataConfig {
 
-//    @Bean
-//    public DataSource dataSource(){
-//        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-//        dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("01010111");
-//        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/demoservicedb");
-//
-//        return dataSource;
-//    }
-
     @Bean
     public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
