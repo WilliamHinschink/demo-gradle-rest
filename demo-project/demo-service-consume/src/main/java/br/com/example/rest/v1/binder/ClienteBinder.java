@@ -1,8 +1,9 @@
 package br.com.example.rest.v1.binder;
 
-import br.com.example.impl.model.CidadeModel;
 import br.com.example.impl.model.ClienteModel;
 import br.com.example.rest.v1.model.Cliente;
+
+import java.text.DateFormat;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
@@ -32,7 +33,12 @@ public class ClienteBinder {
                 .id(cliente.getId())
                 .nome(cliente.getNome())
                 .cidadeModel(CidadeBinder.bindToModel(cliente.getCidade()))
-                .dtNasc(LocalDate.parse(cliente.getDtNasc(), DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+                .dtNasc(parseToModel(cliente))
                 .build();
+    }
+
+    private static LocalDate parseToModel(Cliente cliente) {
+        if(cliente.getDtNasc() == null) return null;
+        return LocalDate.parse(cliente.getDtNasc(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 }

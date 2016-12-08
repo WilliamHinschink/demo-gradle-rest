@@ -177,7 +177,7 @@ local.properties
 
 
 ### Java ###
-*.class
+###*.class
 
 # BlueJ files
 *.ctxt
@@ -209,3 +209,7 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+
+### LOGS ###
+**/logs

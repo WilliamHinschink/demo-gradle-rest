@@ -7,9 +7,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
-/**
- * Created by william on 30/11/2016.
- */
 public class ApiExceptionMapper implements ExceptionMapper<ApiException> {
 
     @Override

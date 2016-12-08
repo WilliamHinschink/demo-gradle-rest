@@ -1,12 +1,11 @@
 package br.com.example.impl.mapper;
 
-import br.com.example.impl.mapper.provider.InsertClienteProvider;
-import br.com.example.impl.model.CidadeModel;
+import br.com.example.impl.mapper.provider.*;
 import br.com.example.impl.model.CidadeModel;
 import br.com.example.impl.model.ClienteModel;
-import br.com.example.impl.service.ClienteService;
 import br.com.example.impl.typeHandler.LocalDateTypeHandler;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.UpdateProvider;
 
 import java.util.List;
 
@@ -40,11 +39,12 @@ public interface ClienteMapper {
     boolean deleteById(@Param("id") Long id);
 
     @InsertProvider(type = InsertClienteProvider.class, method = "insereCliente")
-    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id_cliente")
-    ClienteModel insertCliente(ClienteModel clienteModel);
+    @Options(useGeneratedKeys = true, keyProperty = "clienteModel.id", keyColumn = "id_cliente")
+    void insertCliente(@Param("clienteModel") ClienteModel clienteModel);
 
-    @Update("UPDATE cliente SET nome_cliente = #{nome} WHERE id_cliente = #{id}")
-    boolean updateCliente(ClienteModel clienteModel);
+    //@Update("UPDATE cliente SET nome_cliente = #{nome} WHERE id_cliente = #{id}")
+    @UpdateProvider(type = UpdateClienteProvider.class, method = "updateCliente")
+    boolean updateCliente(@Param("clienteModel") ClienteModel clienteModel);
 
     @Results(value = {
             @Result(property = "id", column = "id_cliente"),

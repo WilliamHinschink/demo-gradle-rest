@@ -12,9 +12,7 @@ public class CidadeService {
 
     private CidadeMapper cidadeMapper;
 
-    public CidadeService(CidadeMapper cidadeMapper) {
-        this.cidadeMapper = cidadeMapper;
-    }
+    public CidadeService(CidadeMapper cidadeMapper) {this.cidadeMapper = cidadeMapper;}
 
     public List<CidadeModel> findAllCidades(){return cidadeMapper.findAllCidades();}
 

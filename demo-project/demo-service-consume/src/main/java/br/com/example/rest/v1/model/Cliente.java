@@ -12,8 +12,6 @@ import javax.xml.bind.annotation.XmlType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "cliente")
-@XmlType(propOrder = {"id", "nome", "cidade", "dtNasc" })
 public class Cliente {
 
     private Long id;

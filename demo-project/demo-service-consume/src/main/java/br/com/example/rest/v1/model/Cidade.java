@@ -6,12 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "cidade")
 public class Cidade {
 
     private Long id;

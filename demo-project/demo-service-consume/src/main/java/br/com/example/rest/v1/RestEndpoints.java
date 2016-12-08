@@ -18,7 +18,7 @@ public class RestEndpoints {
 
     @GET
     @Path("/clientes")
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Cliente> getAllClientes() {
         return ClienteBinder.bindListFromImpl(clienteService.findAllClientes());
     }
@@ -33,21 +33,21 @@ public class RestEndpoints {
     @DELETE
     @Path("/clientes/deleta/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean deleteClienteById(@PathParam("id") Long id) {
-        return clienteService.deleteById(id);
+    public void deleteClienteById(@PathParam("id") Long id) {
+        clienteService.deleteById(id);
     }
 
     @POST
     @Path("/clientes/insere")
     @Consumes(MediaType.APPLICATION_JSON)
     public void insertCliente(@RequestBody Cliente cliente) {
-        if (clienteService.isClienteExist(ClienteBinder.bindToModel(cliente)))
-            clienteService.insertCliente(ClienteBinder.bindToModel(cliente));
+        clienteService.insertCliente(ClienteBinder.bindToModel(cliente));
     }
 
-    @POST
+    @GET
     @Path("/clientes")
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public List<Cliente> findNameCliente(@QueryParam("nome") String nome) {
         return ClienteBinder.bindListFromImpl(clienteService.findByName(nome));
     }
