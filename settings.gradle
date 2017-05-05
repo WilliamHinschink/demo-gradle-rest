@@ -1,3 +1,3 @@
-rootProject.name = 'demo-project'
+rootProject.name = 'demo-gradle-rest'
 include 'demo-service-app', 'demo-service-consume', 'demo-service-impl'
 
